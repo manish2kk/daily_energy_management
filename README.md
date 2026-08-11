@@ -11,6 +11,7 @@ Track daily charging and discharging activities, build streaks, and stay aware o
   <img src="screenshots/app1.jpeg" width="250">
   <img src="screenshots/app2.jpeg" width="250">
   <img src="screenshots/app3.jpeg" width="250">
+  <img src="screenshots/app4.jpeg" width="250">
 </p>
 
 ## Features
