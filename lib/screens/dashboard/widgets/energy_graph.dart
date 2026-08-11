@@ -18,11 +18,18 @@ class _EnergyGraphState extends State<EnergyGraph> {
   static const _gap = 2.0;
   static const _colWidth = _cell + _gap;
 
-  static const _c4Plus = Color(0xFF57D364);
-  static const _c3 = Color(0xFF2DA044);
-  static const _c2 = Color(0xFF186C2D);
-  static const _c1 = Color(0xFF023A16);
-  static const _c0 = Color(0xFF151B23);
+  static const _c4PlusDark = Color(0xFF57D364);
+  static const _c3Dark = Color(0xFF2DA044);
+  static const _c2Dark = Color(0xFF186C2D);
+  static const _c1Dark = Color(0xFF023A16);
+  static const _c0Dark = Color(0xFF151B23);
+
+  static const _c4PlusLight = Color(0xFF065C24);
+  static const _c3Light = Color(0xFF2F8A46);
+  static const _c2Light = Color(0xFF48B55E);
+  static const _c1Light = Color(0xFF7FD488);
+  static const _c0Light = Color(0xFFFAFAFA);
+  static const _graphBgLight = Color(0xFFE8EAED);
 
   final _scroll = ScrollController();
   DateTime? _selected;
@@ -62,17 +69,30 @@ class _EnergyGraphState extends State<EnergyGraph> {
       .where((r) => sameDay(DateTime.parse(r['date'] as String), d))
       .length;
 
+  bool get _isLight => Theme.of(context).brightness == Brightness.light;
+
+  Color _emptyColor() => _isLight ? _c0Light : _c0Dark;
+
   Color _levelColor(int count) {
-    if (count >= 4) return _c4Plus;
-    if (count == 3) return _c3;
-    if (count == 2) return _c2;
-    if (count == 1) return _c1;
-    return _c0;
+    if (_isLight) {
+      if (count >= 4) return _c4PlusLight;
+      if (count == 3) return _c3Light;
+      if (count == 2) return _c2Light;
+      if (count == 1) return _c1Light;
+      return _c0Light;
+    }
+    if (count >= 4) return _c4PlusDark;
+    if (count == 3) return _c3Dark;
+    if (count == 2) return _c2Dark;
+    if (count == 1) return _c1Dark;
+    return _c0Dark;
   }
 
-  Color _cellColor(BuildContext context, DateTime d, {required bool isFuture}) {
+  Color _cellColor(DateTime d, {required bool isFuture}) {
     if (isFuture) {
-      return Theme.of(context).dividerColor.withValues(alpha: .08);
+      return _isLight
+          ? Colors.white.withValues(alpha: .55)
+          : Theme.of(context).dividerColor.withValues(alpha: .08);
     }
     if (_dischargeOn(d)) return Colors.red;
     return _levelColor(_chargingOn(d));
@@ -130,6 +150,9 @@ class _EnergyGraphState extends State<EnergyGraph> {
     return Column(
       children: [
         Card(
+          color: Theme.of(context).brightness == Brightness.light
+              ? _graphBgLight
+              : null,
           clipBehavior: Clip.none,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
@@ -189,7 +212,6 @@ class _EnergyGraphState extends State<EnergyGraph> {
                                 height: _cell,
                                 decoration: BoxDecoration(
                                   color: _cellColor(
-                                    context,
                                     d,
                                     isFuture: isFuture,
                                   ),
@@ -233,17 +255,17 @@ class _EnergyGraphState extends State<EnergyGraph> {
           ),
         ],
         const SizedBox(height: 12),
-        const Wrap(
+        Wrap(
           alignment: WrapAlignment.center,
           spacing: 14,
           runSpacing: 8,
           children: [
-            _LegendSwatch(color: _c0, label: '0'),
-            _LegendSwatch(color: _c1, label: '1'),
-            _LegendSwatch(color: _c2, label: '2'),
-            _LegendSwatch(color: _c3, label: '3'),
-            _LegendSwatch(color: _c4Plus, label: '4+'),
-            _LegendSwatch(color: Colors.red, label: 'Discharge'),
+            _LegendSwatch(color: _emptyColor(), label: '0'),
+            _LegendSwatch(color: _levelColor(1), label: '1'),
+            _LegendSwatch(color: _levelColor(2), label: '2'),
+            _LegendSwatch(color: _levelColor(3), label: '3'),
+            _LegendSwatch(color: _levelColor(4), label: '4+'),
+            const _LegendSwatch(color: Colors.red, label: 'Discharge'),
           ],
         ),
       ],
