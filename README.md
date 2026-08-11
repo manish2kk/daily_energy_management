@@ -8,10 +8,10 @@ Track daily charging and discharging activities, build streaks, and stay aware o
 
 ## Screenshots
 <p align="center">
-  <img src="screenshots/app1.jpeg" width="250">
-  <img src="screenshots/app2.jpeg" width="250">
-  <img src="screenshots/app3.jpeg" width="250">
-  <img src="screenshots/app4.jpeg" width="250">
+  <img src="screenshots/app1.jpeg" width="200">
+  <img src="screenshots/app2.jpeg" width="200">
+  <img src="screenshots/app3.jpeg" width="200">
+  <img src="screenshots/app4.jpeg" width="200">
 </p>
 
 ## Features
