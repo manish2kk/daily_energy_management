@@ -62,7 +62,7 @@ The APK is at `build/app/outputs/flutter-apk/app-release.apk`. Install it on you
 
 ## Contact
 
-Email: [support@dailyenergymanagement.com](mailto:support@dailyenergymanagement.com)
+Email: [support@dailyenergymanagement.com](mailto:manish21295@yahoo.com)
 
 Or open **Settings → Contact us** in the app.
 
