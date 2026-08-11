@@ -7,25 +7,10 @@ Track daily charging and discharging activities, build streaks, and stay aware o
 **Daily Energy Management** helps you notice how daily choices charge or drain your energy. Check off exercise, create, communicate, and discharge items each day, watch your year-long energy graph fill in, and see important times like sunrise–sunset and Brahma Muhurta.
 
 ## Screenshots
-
 <p align="center">
-  <img src="screenshots/app1.jpeg" width="250"><br>
-  <b>Home</b>
-</p>
-
-<p align="center">
-  <img src="screenshots/app2.jpeg" width="250"><br>
-  <b>Checklist</b>
-</p>
-
-<p align="center">
-  <img src="screenshots/app3.jpeg" width="250"><br>
-  <b>Create list</b>
-</p>
-
-<p align="center">
-  <img src="screenshots/app4.jpeg" width="250"><br>
-  <b>Settings</b>
+  <img src="screenshots/app1.jpeg" width="250">
+  <img src="screenshots/app2.jpeg" width="250">
+  <img src="screenshots/app3.jpeg" width="250">
 </p>
 
 ## Features
