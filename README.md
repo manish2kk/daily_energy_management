@@ -8,11 +8,25 @@ Track daily charging and discharging activities, build streaks, and stay aware o
 
 ## Screenshots
 
-Add screenshots under `assets/screenshots/` and they will show here:
+<p align="center">
+  <img src="screenshots/app1.jpeg" width="250"><br>
+  <b>Home</b>
+</p>
 
-| Home | Checklist | Settings |
-| --- | --- | --- |
-| ![Home](assets/screenshots/app1.png) | ![Checklist](assets/screenshots/app2.png) | ![Settings](assets/screenshots/app4.png) |
+<p align="center">
+  <img src="screenshots/app2.jpeg" width="250"><br>
+  <b>Checklist</b>
+</p>
+
+<p align="center">
+  <img src="screenshots/app3.jpeg" width="250"><br>
+  <b>Create list</b>
+</p>
+
+<p align="center">
+  <img src="screenshots/app4.jpeg" width="250"><br>
+  <b>Settings</b>
+</p>
 
 ## Features
 
