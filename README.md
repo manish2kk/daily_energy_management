@@ -16,10 +16,10 @@ Track daily charging and discharging activities, build streaks, and stay aware o
     <th>Settings</th>
   </tr>
   <tr>
-    <td><img src="screenshots/app1.jpeg" width="180"></td>
-    <td><img src="screenshots/app2.jpeg" width="180"></td>
-    <td><img src="screenshots/app3.jpeg" width="180"></td>
-    <td><img src="screenshots/app4.jpeg" width="180"></td>
+    <td><img src="screenshots/app5.jpeg" width="180"></td>
+    <td><img src="screenshots/app6.jpeg" width="180"></td>
+    <td><img src="screenshots/app7.jpeg" width="180"></td>
+    <td><img src="screenshots/app8.jpeg" width="180"></td>
   </tr>
 </table>
 
