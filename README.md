@@ -36,7 +36,9 @@ My mission is simple: to be the single tool you need to architect your entire li
 
 ### Download the app or build it yourself
 
-Download already built file. go to (this is not a virus or malicious code, you can safly download, I guarentee)
+Download already built app. Go to final_app folder. (this is not a virus or malicious code, you can safly download, I guarentee)
+
+Or 
 
 1. Install [Flutter](https://docs.flutter.dev/get-started/install)
 2. Clone this repo and open the project folder
@@ -46,7 +48,6 @@ Download already built file. go to (this is not a virus or malicious code, you c
 flutter pub get
 flutter run
 ```
-
 
 
 ### Build a release APK (Android)
