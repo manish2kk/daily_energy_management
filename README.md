@@ -2,13 +2,16 @@
 
 Track daily charging and discharging activities, build streaks, stay aware of your energy patterns and build unstoppable momentum.
 
-Note: Some people may find it too simple and generic, unless they know how to use it. So I have labelled it as, this app is not for everyone.
+Some people may find it too simple and generic, unless they know how to use it. So I have labelled it as, this app is not for everyone.
+>[!NOTE]
+> “This app is for those who view life in terms of energy, vibration and frequencies.”
 
-> "This app is for those who understand that everything is energy, vibration, and frequency."
 
 My mission is simple: to be the single tool you need to architect your entire life, transform your academics, work, research, finance, business venture, skills, communication, and relationships.
 
-You need to be aware of just 4 kinds of energies to succed in almost all spheres in life i.e. Exercise energy(know what, when, how to exercise), Creation/building energy(know what, when, for whom to build), Communication energy(know how when whom to communicate), Discharging energies(Avoid this tamsik energy as much as possible).
+
+> [!TIP]
+> You need to be aware of just 4 kinds of energies to succed in almost all spheres in life i.e. Exercise energy(know what, when, how to exercise), Creation/building energy(know what, when, for whom to build), Communication energy(know how when whom to communicate), Discharging energies(Avoid this tamsik energy as much as possible).
 
 ## App overview
 
@@ -83,16 +86,6 @@ Please keep changes focused and match the existing code style.
 This project is licensed under the [Apache License 2.0](LICENSE).
 
 
-> [!TIP]
-> **Core Philosophy**
-> “This app is for those who view life in terms of energy, vibration and frequencies.”
 
 
->[!NOTE]
-> **Core Philosophy**
-> “This app is for those who view life in terms of energy, vibration and frequencies.”
 
-
-<blockquote>
-  <p>“This app is for those who view life in terms of energy, vibration and frequencies.”</p>
-</blockquote>
