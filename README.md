@@ -16,11 +16,9 @@ You need to be aware of just 4 kinds of energies to succed in almost all spheres
 
 ## Screenshots
 
-<p align="center">
-  <img src="screenshots/ss1.jpeg" width="250">
-  <img src="screenshots/ss2.jpeg" width="250">
-  <img src="screenshots/ss3.jpeg" width="250">
-</p>
+| Home | Checklist | Settings |
+| :---: | :---: | :---: |
+| <img src="screenshots/ss1.jpeg" width="250"> | <img src="screenshots/ss2.jpeg" width="250"> | <img src="screenshots/ss3.jpeg" width="250"> |
 
 ## Features
 
