@@ -14,6 +14,14 @@ You need to be aware of just 4 kinds of energies to succed in almost all spheres
 
 **Daily Energy Management** helps you notice how daily choices charge or drain your energy. Check off exercise, create, communicate, and discharge items each day, watch your year-long energy graph fill in, and see important times like sunrise–sunset and Brahma Muhurta.
 
+## Screenshots
+
+<p align="center">
+  <img src="screenshots/ss1.jpeg" width="250">
+  <img src="screenshots/ss2.jpeg" width="250">
+  <img src="screenshots/ss3.jpeg" width="250">
+</p>
+
 ## Features
 
 - **Home** — streak, monthly good activities, energy graph, important times
