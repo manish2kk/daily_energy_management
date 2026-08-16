@@ -7,8 +7,7 @@ Some people may find it too simple and generic, unless they know how to use it. 
 > “This app is for those who view life in terms of energy, vibration and frequencies.”
 
 
-My mission is simple: to be the single tool you need to architect your entire life, transform your academics, work, research, finance, business venture, skills, communication, and relationships.
-
+My mission is simple: to build 'The' one app that can change your entire life, from academics, work, research, finance, business venture, skills, communication, and relationships. This app is different from to-do list, time tracker, routine or time table apps.
 
 > [!TIP]
 > You need to be aware of just 4 kinds of energies to succed in almost all spheres in life i.e. Exercise energy(know what, when, how to exercise), Creation/building energy(know what, when, for whom to build), Communication energy(know how when whom to communicate), Discharging energies(Avoid this tamsik energy as much as possible).
