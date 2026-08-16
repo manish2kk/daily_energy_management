@@ -69,7 +69,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       .length;
 
   int streak() {
-    var d = dateOnly(DateTime.now());
+    // Show streak through yesterday — today's progress is still in progress.
+    var d = dateOnly(DateTime.now()).subtract(const Duration(days: 1));
     var n = 0;
     while (countOn(d) > 0 && !dischargeOn(d)) {
       n++;

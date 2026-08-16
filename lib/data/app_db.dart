@@ -47,20 +47,55 @@ class AppDb {
     return (max ?? -1) + 1;
   }
 
-  static Future<void> seedDefaults(List<(String, String)> defaults) async {
+  static Future<void> ensureToday(List<(String, String)> defaults) async {
     final today = DateTime.now();
-    final start = DateTime(today.year, today.month, today.day).toIso8601String();
-    final end = DateTime(today.year, today.month, today.day + 1).toIso8601String();
+    final start = DateTime(today.year, today.month, today.day);
+    final end = start.add(const Duration(days: 1));
+    final startIso = start.toIso8601String();
+    final endIso = end.toIso8601String();
+
     final existing = await db.query(
       'activities',
       where: 'date>=? AND date<?',
-      whereArgs: [start, end],
+      whereArgs: [startIso, endIso],
       limit: 1,
     );
-    // Only seed when today is empty — never re-add after rename/delete.
+    // Today already has a checklist — don't recreate it.
     if (existing.isNotEmpty) return;
-    for (final d in defaults) {
-      await add(d.$1, d.$2);
+
+    // Copy the most recent previous day's checklist forward.
+    final previous = await db.rawQuery(
+      'SELECT date FROM activities WHERE date<? ORDER BY date DESC LIMIT 1',
+      [startIso],
+    );
+
+    if (previous.isEmpty) {
+      for (final d in defaults) {
+        await add(d.$1, d.$2);
+      }
+      return;
+    }
+
+    final prevDate = DateTime.parse(previous.first['date'] as String);
+    final prevStart = DateTime(prevDate.year, prevDate.month, prevDate.day);
+    final prevEnd = prevStart.add(const Duration(days: 1));
+    final prevItems = await db.query(
+      'activities',
+      where: 'date>=? AND date<?',
+      whereArgs: [prevStart.toIso8601String(), prevEnd.toIso8601String()],
+      orderBy: 'sort_order ASC, id ASC',
+    );
+
+    var order = 0;
+    for (final item in prevItems) {
+      await db.insert('activities', {
+        'title': item['title'],
+        'category': item['category'],
+        'completed': 0,
+        'date': DateTime.now().toIso8601String(),
+        'sort_order': item['sort_order'] ?? order,
+      });
+      order++;
     }
   }
 
@@ -119,7 +154,13 @@ class AppDb {
           DateTime(n.year, n.month, n.day).toIso8601String(),
           DateTime(n.year, n.month, n.day + 1).toIso8601String(),
         ],
-        orderBy: 'completed ASC, sort_order ASC, id ASC',
+        orderBy:
+            "completed ASC, CASE category "
+            "WHEN 'exercise' THEN 0 "
+            "WHEN 'create' THEN 1 "
+            "WHEN 'communicate' THEN 2 "
+            "WHEN 'discharge' THEN 3 "
+            "ELSE 4 END ASC, sort_order ASC, id ASC",
       ),
     );
   }

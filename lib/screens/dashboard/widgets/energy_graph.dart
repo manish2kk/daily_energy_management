@@ -18,16 +18,14 @@ class _EnergyGraphState extends State<EnergyGraph> {
   static const _gap = 2.0;
   static const _colWidth = _cell + _gap;
 
-  static const _c4PlusDark = Color(0xFF57D364);
-  static const _c3Dark = Color(0xFF2DA044);
-  static const _c2Dark = Color(0xFF186C2D);
-  static const _c1Dark = Color(0xFF023A16);
+  static const _c9PlusDark = Color(0xFF57D364);
+  static const _c5to8Dark = Color(0xFF3D894A);
+  static const _c1to4Dark = Color(0xFF224030);
   static const _c0Dark = Color(0xFF151B23);
 
-  static const _c4PlusLight = Color(0xFF065C24);
-  static const _c3Light = Color(0xFF2F8A46);
-  static const _c2Light = Color(0xFF48B55E);
-  static const _c1Light = Color(0xFF7FD488);
+  static const _c9PlusLight = Color(0xFF065C24);
+  static const _c5to8Light = Color(0xFF368C4C);
+  static const _c1to4Light = Color(0xFF67BC74);
   static const _c0Light = Color(0xFFFAFAFA);
   static const _graphBgLight = Color(0xFFE8EAED);
 
@@ -75,16 +73,14 @@ class _EnergyGraphState extends State<EnergyGraph> {
 
   Color _levelColor(int count) {
     if (_isLight) {
-      if (count >= 4) return _c4PlusLight;
-      if (count == 3) return _c3Light;
-      if (count == 2) return _c2Light;
-      if (count == 1) return _c1Light;
+      if (count >= 9) return _c9PlusLight;
+      if (count >= 5) return _c5to8Light;
+      if (count >= 1) return _c1to4Light;
       return _c0Light;
     }
-    if (count >= 4) return _c4PlusDark;
-    if (count == 3) return _c3Dark;
-    if (count == 2) return _c2Dark;
-    if (count == 1) return _c1Dark;
+    if (count >= 9) return _c9PlusDark;
+    if (count >= 5) return _c5to8Dark;
+    if (count >= 1) return _c1to4Dark;
     return _c0Dark;
   }
 
@@ -261,10 +257,9 @@ class _EnergyGraphState extends State<EnergyGraph> {
           runSpacing: 8,
           children: [
             _LegendSwatch(color: _emptyColor(), label: '0'),
-            _LegendSwatch(color: _levelColor(1), label: '1'),
-            _LegendSwatch(color: _levelColor(2), label: '2'),
-            _LegendSwatch(color: _levelColor(3), label: '3'),
-            _LegendSwatch(color: _levelColor(4), label: '4+'),
+            _LegendSwatch(color: _levelColor(1), label: '1–4'),
+            _LegendSwatch(color: _levelColor(5), label: '5–8'),
+            _LegendSwatch(color: _levelColor(9), label: '9+'),
             const _LegendSwatch(color: Colors.red, label: 'Discharge'),
           ],
         ),

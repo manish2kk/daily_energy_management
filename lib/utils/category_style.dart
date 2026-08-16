@@ -8,11 +8,20 @@ const _lightColors = {
 };
 
 const _darkColors = {
-  'exercise': Color(0xFF4A3A6B),
+  'exercise': Color(0xFF5AA9D6),
   'create': Color(0xFF3A3A6B),
   'communicate': Color(0xFF2F4A5E),
   'discharge': Color(0xFF6B3A3A),
 };
+
+/// Display order: exercise → create → communicate → discharge.
+int categoryRank(String category) => {
+      'exercise': 0,
+      'create': 1,
+      'communicate': 2,
+      'discharge': 3,
+    }[category] ??
+    99;
 
 Color categoryColor(String category, {Brightness brightness = Brightness.light}) =>
     (brightness == Brightness.dark ? _darkColors : _lightColors)[category]!;

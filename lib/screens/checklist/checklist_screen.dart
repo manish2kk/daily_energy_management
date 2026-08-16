@@ -30,7 +30,7 @@ class _ChecklistScreenState extends State<ChecklistScreen> {
   }
 
   Future<void> load() async {
-    await AppDb.seedDefaults(defaults);
+    await AppDb.ensureToday(defaults);
     items = await AppDb.today();
     if (mounted) setState(() {});
   }
@@ -112,17 +112,25 @@ class _ChecklistScreenState extends State<ChecklistScreen> {
     }
   }
 
-  void _moveCheckedToBottom() {
-    final open = items.where((e) => (e['completed'] as int) != 1).toList();
-    final done = items.where((e) => (e['completed'] as int) == 1).toList();
-    items = [...open, ...done];
+  void _sortItems() {
+    items.sort((a, b) {
+      final aDone = (a['completed'] as int) == 1 ? 1 : 0;
+      final bDone = (b['completed'] as int) == 1 ? 1 : 0;
+      if (aDone != bDone) return aDone.compareTo(bDone);
+      final cat = categoryRank(a['category'] as String)
+          .compareTo(categoryRank(b['category'] as String));
+      if (cat != 0) return cat;
+      final aOrder = (a['sort_order'] as int?) ?? 0;
+      final bOrder = (b['sort_order'] as int?) ?? 0;
+      return aOrder.compareTo(bOrder);
+    });
   }
 
   void onReorderItem(int oldIndex, int newIndex) {
     setState(() {
       final item = items.removeAt(oldIndex);
       items.insert(newIndex, item);
-      _moveCheckedToBottom();
+      _sortItems();
     });
     AppDb.reorder(items.map((e) => e['id'] as int).toList());
   }

@@ -1,27 +1,18 @@
 # Daily Energy Management
 
-Track daily charging and discharging activities, build streaks, and stay aware of your energy patterns.
+Track daily charging and discharging activities, build streaks, stay aware of your energy patterns and build unstoppable momentum.
+
+Note: Some people may find it too simple and generic, unless they know how to use it. So I have labelled it as, this app is not for everyone.
+
+> "This app is for those who understand that everything is energy, vibration, and frequency."
+
+My mission is simple: to be the single tool you need to architect your entire life, transform your academics, work, research, finance, business venture, skills, communication, and relationships.
+
+You need to be aware of just 4 kinds of energies to succed in almost all spheres in life i.e. Exercise energy(know what, when, how to exercise), Creation/building energy(know what, when, for whom to build), Communication energy(know how when whom to communicate), Discharging energies(Avoid this tamsik energy as much as possible).
 
 ## App overview
 
 **Daily Energy Management** helps you notice how daily choices charge or drain your energy. Check off exercise, create, communicate, and discharge items each day, watch your year-long energy graph fill in, and see important times like sunrise–sunset and Brahma Muhurta.
-
-## Screenshots
-
-<table>
-  <tr>
-    <th>Home</th>
-    <th>Checklist</th>
-    <th>Edit List</th>
-    <th>Settings</th>
-  </tr>
-  <tr>
-    <td><img src="screenshots/app5.jpeg" width="180"></td>
-    <td><img src="screenshots/app6.jpeg" width="180"></td>
-    <td><img src="screenshots/app7.jpeg" width="180"></td>
-    <td><img src="screenshots/app8.jpeg" width="180"></td>
-  </tr>
-</table>
 
 ## Features
 
@@ -32,7 +23,7 @@ Track daily charging and discharging activities, build streaks, and stay aware o
 - **Settings** — dark/light theme, app overview, about, contact
 - **Local storage** — SQLite on device; no account required
 
-## How to download and use
+
 
 ### Run from source
 
@@ -44,6 +35,8 @@ Track daily charging and discharging activities, build streaks, and stay aware o
 flutter pub get
 flutter run
 ```
+
+
 
 ### Build a release APK (Android)
 
@@ -60,7 +53,9 @@ The APK is at `build/app/outputs/flutter-apk/app-release.apk`. Install it on you
 3. Open **Home** to see streak, energy graph, and important times
 4. Use **Settings** for theme, about, and contact
 
-## Contact
+
+
+## Contact for more details
 
 Email: [manish21295@yahoo.com](mailto:manish21295@yahoo.com)
 
