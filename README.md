@@ -30,11 +30,13 @@ My mission is simple: to be the single tool you need to architect your entire li
 - **Energy graph** — GitHub-style year view (green for charging, red for discharge)
 - **Important times** — today’s sunrise–sunset and Brahma Muhurta
 - **Settings** — dark/light theme, app overview, about, contact
-- **Local storage** — SQLite on device; no account required
+- **Local storage** — on device; no account required
 
 
 
-### Run from source
+### Download the app or build it yourself
+
+Download already built file. go to (this is not a virus or malicious code, you can safly download, I guarentee)
 
 1. Install [Flutter](https://docs.flutter.dev/get-started/install)
 2. Clone this repo and open the project folder
