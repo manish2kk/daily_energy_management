@@ -36,9 +36,9 @@ My mission is simple: to be the single tool you need to architect your entire li
 
 ### Download the app or build it yourself
 
-Download already built app. Go to final_app folder. (this is not a virus or malicious code, you can safly download, I guarentee)
+Download the already built app from the [`final_app`](final_app/) folder. (This is not a virus or malicious code — you can safely download it, I guarantee.)
 
-Or 
+Or build from scratch
 
 1. Install [Flutter](https://docs.flutter.dev/get-started/install)
 2. Clone this repo and open the project folder
