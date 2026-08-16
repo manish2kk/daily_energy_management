@@ -81,3 +81,18 @@ Please keep changes focused and match the existing code style.
 ## License
 
 This project is licensed under the [Apache License 2.0](LICENSE).
+
+
+> [!TIP]
+> **Core Philosophy**
+> “This app is for those who view life in terms of energy, vibration and frequencies.”
+
+
+>[!NOTE]
+> **Core Philosophy**
+> “This app is for those who view life in terms of energy, vibration and frequencies.”
+
+
+<blockquote>
+  <p>“This app is for those who view life in terms of energy, vibration and frequencies.”</p>
+</blockquote>
