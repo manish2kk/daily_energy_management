@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import 'about_us_screen.dart';
 import 'app_overview_screen.dart';
 import 'contact_us_screen.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   final bool dark;
   final ValueChanged<bool> onTheme;
 
@@ -15,6 +16,25 @@ class SettingsScreen extends StatelessWidget {
   });
 
   @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  String _version = '…';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadVersion();
+  }
+
+  Future<void> _loadVersion() async {
+    final info = await PackageInfo.fromPlatform();
+    if (!mounted) return;
+    setState(() => _version = info.version);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
@@ -22,8 +42,8 @@ class SettingsScreen extends StatelessWidget {
         children: [
           SwitchListTile(
             title: const Text('Dark mode'),
-            value: dark,
-            onChanged: onTheme,
+            value: widget.dark,
+            onChanged: widget.onTheme,
           ),
           ListTile(
             leading: const Icon(Icons.info_outline),
@@ -46,10 +66,10 @@ class SettingsScreen extends StatelessWidget {
               MaterialPageRoute(builder: (_) => const ContactUsScreen()),
             ),
           ),
-          const ListTile(
-            leading: Icon(Icons.tag),
-            title: Text('App version'),
-            subtitle: Text('1.0.0'),
+          ListTile(
+            leading: const Icon(Icons.tag),
+            title: const Text('App version'),
+            subtitle: Text(_version),
           ),
         ],
       ),

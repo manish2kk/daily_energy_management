@@ -1,7 +1,7 @@
 name: daily_energy_management
 description: Daily Energy Management — track charging and discharging activities.
 publish_to: "none"
-version: 1.0.0+1
+version: 1.2.0+1
 
 environment:
   sdk: ^3.12.2
@@ -16,6 +16,7 @@ dependencies:
   shared_preferences: ^2.5.5
   geolocator: ^14.0.3
   nrel_spa: ^1.0.1
+  package_info_plus: ^10.2.1
 
 dev_dependencies:
   flutter_test:

@@ -28,8 +28,8 @@ Color categoryColor(String category, {Brightness brightness = Brightness.light})
 
 Color checkedItemColor({Brightness brightness = Brightness.light}) =>
     brightness == Brightness.dark
-        ? const Color(0xFF1B5E20)
-        : const Color(0xFFC8E6C9);
+        ? const Color(0xFF3A3A3A)
+        : const Color(0xFFE0E0E0);
 
 Color checklistTitleColor({Brightness brightness = Brightness.light}) =>
     brightness == Brightness.dark ? Colors.white : Colors.black87;

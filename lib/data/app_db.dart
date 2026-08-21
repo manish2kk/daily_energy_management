@@ -4,6 +4,14 @@ import 'package:sqflite/sqflite.dart';
 class AppDb {
   static late Database db;
 
+  static const _categoryOrder =
+      "CASE category "
+      "WHEN 'exercise' THEN 0 "
+      "WHEN 'create' THEN 1 "
+      "WHEN 'communicate' THEN 2 "
+      "WHEN 'discharge' THEN 3 "
+      "ELSE 4 END ASC, sort_order ASC, id ASC";
+
   static Future<void> init() async {
     db = await openDatabase(
       join(await getDatabasesPath(), 'energy_management.db'),
@@ -38,6 +46,12 @@ class AppDb {
     );
   }
 
+  static (String, String) _dayBounds(DateTime day) {
+    final start = DateTime(day.year, day.month, day.day);
+    final end = start.add(const Duration(days: 1));
+    return (start.toIso8601String(), end.toIso8601String());
+  }
+
   static Future<int> _nextSortOrder(String start, String end) async {
     final result = await db.rawQuery(
       'SELECT MAX(sort_order) as m FROM activities WHERE date>=? AND date<?',
@@ -49,10 +63,7 @@ class AppDb {
 
   static Future<void> ensureToday(List<(String, String)> defaults) async {
     final today = DateTime.now();
-    final start = DateTime(today.year, today.month, today.day);
-    final end = start.add(const Duration(days: 1));
-    final startIso = start.toIso8601String();
-    final endIso = end.toIso8601String();
+    final (startIso, endIso) = _dayBounds(today);
 
     final existing = await db.query(
       'activities',
@@ -71,20 +82,13 @@ class AppDb {
 
     if (previous.isEmpty) {
       for (final d in defaults) {
-        await add(d.$1, d.$2);
+        await add(d.$1, d.$2, day: today);
       }
       return;
     }
 
     final prevDate = DateTime.parse(previous.first['date'] as String);
-    final prevStart = DateTime(prevDate.year, prevDate.month, prevDate.day);
-    final prevEnd = prevStart.add(const Duration(days: 1));
-    final prevItems = await db.query(
-      'activities',
-      where: 'date>=? AND date<?',
-      whereArgs: [prevStart.toIso8601String(), prevEnd.toIso8601String()],
-      orderBy: 'sort_order ASC, id ASC',
-    );
+    final prevItems = await forDate(prevDate);
 
     var order = 0;
     for (final item in prevItems) {
@@ -99,15 +103,20 @@ class AppDb {
     }
   }
 
-  static Future<void> add(String title, String category) async {
-    final n = DateTime.now();
-    final start = DateTime(n.year, n.month, n.day).toIso8601String();
-    final end = DateTime(n.year, n.month, n.day + 1).toIso8601String();
+  static Future<void> add(
+    String title,
+    String category, {
+    DateTime? day,
+  }) async {
+    final d = day ?? DateTime.now();
+    final (start, end) = _dayBounds(d);
     await db.insert('activities', {
       'title': title,
       'category': category,
       'completed': 0,
-      'date': DateTime.now().toIso8601String(),
+      'date': DateTime(d.year, d.month, d.day, DateTime.now().hour,
+              DateTime.now().minute, DateTime.now().second)
+          .toIso8601String(),
       'sort_order': await _nextSortOrder(start, end),
     });
   }
@@ -143,26 +152,24 @@ class AppDb {
     await batch.commit(noResult: true);
   }
 
-  static Future<List<Map<String, Object?>>> today() async {
-    final n = DateTime.now();
-    // Copy into a growable list — sqflite returns a read-only QueryResultSet.
+  static Future<List<Map<String, Object?>>> forDate(DateTime day) async {
+    final (start, end) = _dayBounds(day);
     return List<Map<String, Object?>>.from(
       await db.query(
         'activities',
         where: 'date>=? AND date<?',
-        whereArgs: [
-          DateTime(n.year, n.month, n.day).toIso8601String(),
-          DateTime(n.year, n.month, n.day + 1).toIso8601String(),
-        ],
-        orderBy:
-            "completed ASC, CASE category "
-            "WHEN 'exercise' THEN 0 "
-            "WHEN 'create' THEN 1 "
-            "WHEN 'communicate' THEN 2 "
-            "WHEN 'discharge' THEN 3 "
-            "ELSE 4 END ASC, sort_order ASC, id ASC",
+        whereArgs: [start, end],
+        orderBy: 'completed ASC, $_categoryOrder',
       ),
     );
+  }
+
+  static Future<DateTime?> earliestActivityDate() async {
+    final rows = await db.rawQuery(
+      'SELECT date FROM activities ORDER BY date ASC LIMIT 1',
+    );
+    if (rows.isEmpty) return null;
+    return DateTime.parse(rows.first['date'] as String);
   }
 
   static Future<List<Map<String, Object?>>> allCompleted() async =>
